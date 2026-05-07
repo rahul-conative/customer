@@ -157,3 +157,8 @@ export const arrivalImages = {
   sprayBottle : "/image/png/SprayBottle.png",
   perfume: "/image/png/Perfume.png",
 };
+
+export const infoSection = {
+  image: "/image/png/hand.png",
+  logo: "/image/png/favicon.png",
+};
