@@ -83,18 +83,16 @@ function SwiperButtons({ swiperRef, isBeginning, isEnd }) {
       <button
         disabled={isBeginning}
         onClick={() => swiperRef.current?.slidePrev()}
-        className={`w-12 h-12 flex items-center justify-center bg-[#E5E5E5] text-gray-500  transition-all duration-300 ${
-          isBeginning ? "opacity-50 cursor-not-allowed" : ""
-        }`}
+        className={`w-12 h-12 flex items-center justify-center bg-[#E5E5E5] text-gray-500  transition-all duration-300 ${isBeginning ? "opacity-50 cursor-not-allowed" : ""
+          }`}
       >
         <IoArrowBackOutline size={24} />
       </button>
       <button
         disabled={isEnd}
         onClick={() => swiperRef.current?.slideNext()}
-        className={`w-12 h-12 flex items-center justify-center bg-accent text-white transition-all duration-300 ${
-          isEnd ? "opacity-50 cursor-not-allowed" : ""
-        }`}
+        className={`w-12 h-12 flex items-center justify-center bg-accent text-white transition-all duration-300 ${isEnd ? "opacity-50 cursor-not-allowed" : ""
+          }`}
       >
         <IoArrowForwardOutline size={24} />
       </button>

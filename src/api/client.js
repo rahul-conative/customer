@@ -41,8 +41,7 @@ api.interceptors.response.use(
         refreshPromise ||
         axios
           .post(
-            `${import.meta.env.VITE_API_BASE_URL || ""}${
-              endpoints.auth.refresh
+            `${import.meta.env.VITE_API_BASE_URL || ""}${endpoints.auth.refresh
             }`,
             { refreshToken }
           )

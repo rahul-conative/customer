@@ -18,10 +18,9 @@ const Button = ({
 }) => {
   const sizes = {
     sm: "text-xs min-h-[28px]",
-    md: "text-sm xl:text-base min-h-[36px] ",
+    md: "text-sm xl:text-base min-h-[34px] ",
     lg: "text-base xl:text-xl min-h-[50px]",
   };
-  
 
   const baseStyles = `  ${sizes[size]} transition-all duration-200 flex items-center justify-center gap-2   font-montserrat  cursor-pointer font-medium  `;
 

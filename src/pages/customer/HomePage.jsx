@@ -23,8 +23,6 @@ import MothersDaySwiper from "../../components/mothersDaySwiper";
 import CollageMainSection from "../../components/collageCard";
 import BrandSwiper from "../../components/brandSwiper";
 
-
-
 export function HomePage() {
   const dispatch = useDispatch();
   const catalog = useFetch(
@@ -76,8 +74,6 @@ export function HomePage() {
   return (
     <>
       <Seo title="Sam Global | Shop smarter" />
-
-
       <div className="hidden">{Boolean(catalog || cms || products.length)}</div>
       <HomeCategoryGrid categories={categories} loading={isHomeLoading} />
       <CollageMainSection />
@@ -88,7 +84,6 @@ export function HomePage() {
       <MothersDaySwiper />
       <BrandSwiper />
       <HomeProductsForYouSection loading={isHomeLoading} />
-
       <MothersDaySwiper />
       {recent.length > 0 && (
         <>

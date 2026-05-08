@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import Button from "../Button/Button";
 import ImageSkeleton from "../ui/Image";
 import { Link, useNavigate } from "react-router-dom";
-import { ChevronDown, Search } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import {
   header as categoryData,
   navbarIcons as navData,
   icons,
 } from "../../constant/image.constant";
+import SearchBar from "../ui/SearchBar";
+
 
 export const TopHeader = () => {
   const navLinks = [
@@ -98,7 +100,7 @@ export const TopHeader = () => {
           <Button
             variant="custom"
             rounded={true}
-            className="  pxfont-bold border"
+            className="font-bold border min-h-[20px] px-3"
             bgColor="#FFFFFF"
             borderColor="#CE9F2D"
             textColor="#CE9F2D"
@@ -113,21 +115,8 @@ export const TopHeader = () => {
 
 export const Navbar = ({ icons: propIcons }) => {
   const displayIcons = propIcons || navData;
-  const borderGradient = "linear-gradient(90deg, #A26D27 0%, #CE9F2D 100%)";
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSearch = () => {
-    if (searchQuery.trim()) {
-      navigate(`/products/search?q=${searchQuery}`);
-    }
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      handleSearch();
-    }
-  };
 
   return (
     <header className="w-full">
@@ -136,7 +125,7 @@ export const Navbar = ({ icons: propIcons }) => {
         <div className="flex shrink-0 items-center">
           <Link to="/">
             <img
-              src="/image/png/logo.png"
+              src={icons.logo}
               alt="logo"
               className="h-auto w-[84px] object-contain sm:w-[104px] lg:h-[78px] lg:w-[141px]"
             />
@@ -144,41 +133,10 @@ export const Navbar = ({ icons: propIcons }) => {
         </div>
 
         {/* 2. SEARCH BAR */}
-        <div className="group order-3 mt-1 w-full flex-1 lg:order-none lg:mt-0 lg:w-auto">
-          <div
-            className="p-[2px] rounded-full"
-            style={{ background: borderGradient }}
-          >
-            <div className="flex h-[44px] w-full items-center overflow-hidden rounded-full border-none bg-white pl-3 pr-1 outline-none sm:h-[48px] sm:pl-4 lg:h-[54px] lg:pl-6 lg:pr-1.5">
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="Barbour Beadnell wax jacket in black"
-                className="w-full h-full outline-none border-none ring-0 text-gray-700 bg-transparent focus:ring-0 text-sm lg:text-base"
-              />
-
-              <div className="ml-1 flex shrink-0 items-center gap-2 sm:gap-3 lg:ml-2 lg:gap-6">
-                <img
-                  src={icons.Mic}
-                  alt="mic"
-                  className="h-4 w-4 cursor-pointer object-contain hover:opacity-80 sm:h-5 sm:w-5 lg:h-7 lg:w-7"
-                />
-
-                <Button
-                  variant="gradient"
-                  rounded={true}
-                  icon={<Search size={18} />}
-                  label="Search"
-                  size="md"
-                  className="px-4 2xl:px-6  font-medium "
-                  onClick={handleSearch}
-                />
-              </div>
-            </div>
-          </div>
+        <div className="order-3 mt-1 w-full flex-1 lg:order-none lg:mt-0 lg:w-auto">
+          <SearchBar />
         </div>
+
 
         {/* 3. ICONS & ACTIONS */}
         <div className="order-2 flex shrink-0 items-center gap-2 sm:gap-3 lg:gap-5">
@@ -193,8 +151,8 @@ export const Navbar = ({ icons: propIcons }) => {
                     src={item.img}
                     alt={item.name}
                     className={`object-contain ${item.name === "IN"
-                      ? "w-[40px] h-[29px] lg:w-[60px] lg:h-[42px]"
-                      : "w-[24px] h-[24px] lg:w-[28px] lg:h-[28px]"
+                        ? "w-[40px] h-[29px] lg:w-[60px] lg:h-[42px]"
+                        : "w-[24px] h-[24px] lg:w-[28px] lg:h-[28px]"
                       }`}
                   />
                 </Link>
@@ -225,7 +183,7 @@ export const CategoryBar = ({ headerData }) => {
     Object.entries(categoryData).map(([name, img]) => ({ name, img }));
   return (
     <header className="w-full">
-      <div className="w-container hide-scrollbar flex justify-start gap-7 overflow-x-auto px-3 py-3 sm:gap-8 lg:justify-center lg:gap-10 ">
+      <div className="w-container hide-scrollbar flex justify-start gap-7 overflow-x-auto px-3 py-3 sm:gap-8 lg:justify-center lg:gap-12 ">
         {categories?.map((item, index) => (
           <Link
             key={index}
@@ -245,11 +203,11 @@ export const CategoryBar = ({ headerData }) => {
   );
 };
 
-export const Header = () => {
+export const Header = ({ navbarIcons, categoryData }) => {
   return (
     <div className="flex flex-col w-full">
       <TopHeader />
-      <Navbar />
+      <Navbar icons={navbarIcons} />
       <div
         className="w-full border-t border-gray-300"
         style={{
@@ -259,7 +217,7 @@ export const Header = () => {
           borderWidth: "1px",
         }}
       ></div>
-      <CategoryBar />
+      <CategoryBar headerData={categoryData} />
     </div>
   );
 };

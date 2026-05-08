@@ -77,6 +77,7 @@ export const icons = {
   Heart: "/image/png/Heart.png",
   Cart: "/image/png/Cart.png",
   Mic: "/image/png/Mic.png",
+  logo: "/image/png/logo.png",
 };
 
 export const bannerData = [
@@ -154,11 +155,13 @@ export const arrivalImages = {
   diamondRings: "/image/png/Ring.png",
   stylishGirls: productImages.stylishGirls,
   blazer: productImages.blazer,
-  sprayBottle : "/image/png/SprayBottle.png",
+  sprayBottle: "/image/png/SprayBottle.png",
   perfume: "/image/png/Perfume.png",
 };
 
 export const infoSection = {
   image: "/image/png/hand.png",
   logo: "/image/png/favicon.png",
+  arrow: "/image/png/arrow.png",
 };
+
